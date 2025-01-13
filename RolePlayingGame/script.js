@@ -77,7 +77,7 @@ const sellWeapon = () => {
 
 
 const goFight = () => {
-    updates(locations[3]);
+    update(locations[3]);
     monsterHealth = monsters[fighting].health;
     monsterStats.style.display = "block";
     monsterName.innerText = monsters[fighting].name;
