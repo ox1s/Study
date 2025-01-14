@@ -99,27 +99,34 @@ const attack = () => {
     text.innerText = `The ${monsters[fighting].name} attacks.`;
     text.innerText += ` You attack it with your ${weapons[currentWeaponIndex].name}.`;
     health -= getMonsterAttackValue(monsters[fighting].level);
-    monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+    if (isMonsterHit())
+        monsterHealth -= weapons[currentWeaponIndex].power + Math.floor(Math.random() * xp) + 1;
+    else
+        text.innerText += " You miss.";
     healthText.innerText = health;
     monsterHealthText.innerText = monsterHealth;
     if (health <= 0) {
         lose();
     }
     else if (monsterHealth <= 0) {
-        if(fighting === 2)
-        {
+        if (fighting === 2) {
             winGame();
         }
-        else 
-        {
+        else {
             defeatMonster();
         }
     }
+    if(Math.random() <= .1)
+        text.innerText += ` Your ${inventory.pop()} breaks.`;
 };
 const dodge = () => {
     text.innerText = `You dodged the attack from the ${monsters[fighting].name}`;
-
 };
+const getMonsterAttackValue = (level) => {
+    const hit = (level * 5) - (Math.floor(Math.random() * xp));
+    return hit > 0 ? hit : 0;
+};
+const isMonsterHit = () => Math.random > .2 || health < 20;
 const defeatMonster = () => {
     gold += Math.floor(monsters[fighting].level * 6.7);
     xp += monsters[fighting].level;
