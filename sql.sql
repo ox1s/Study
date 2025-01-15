@@ -34,3 +34,20 @@ from multiplication;
 -- you will be given a table, goals, with columns la_liga_goals, copa_del_rey_goals, and champions_league_goals. Return a table with a column, res.
 select la_liga_goals + copa_del_rey_goals + champions_league_goals as res
 from goals;
+-- # write your SQL statement here: you are given a table 'disemvowel' with column 'str', return a table with column 'str' and your result in a column named 'res'.
+SELECT str,
+    REGEXP_REPLACE(str, '[aeiou]', '', 'gi') AS res
+FROM disemvowel;
+-- # write your SQL statement here: you are given a table 'booltoword' with column 'bool', return a table with column 'bool' and your result in a column named 'res'.
+SELECT bool,
+    CASE
+        WHEN bool = true THEN 'Yes'
+        ELSE 'No'
+    END AS res
+FROM booltoword;
+
+-- # write your SQL statement here: you are given a table 'love' with columns 'flower1' and 'flower2', return a table with columns ('flower1' and 'flower2') and your result in a column named 'res'.
+SELECT flower1, 
+       flower2, 
+       flower1 % 2 != flower2 % 2 AS res
+FROM love;
