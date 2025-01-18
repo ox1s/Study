@@ -6,10 +6,10 @@ public class HelloWorld
 {
     public static void Main(string[] args)
     {
-        string s = "asd asdf asd asd wobtdf wobtdf";
+        string s = "ldgpx'gq pexxertr qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaad";
         Console.WriteLine("Input: " + s);
         List<string> input = new List<string>(s.ToLower().Split(' '));
-        
+
         var cleanedItems = input
             .Select(item => new string(item.Where(c => (c >= 'a' && c <= 'z') || c == '\'').ToArray()))
             .Where(item => !string.IsNullOrEmpty(item))
@@ -19,71 +19,78 @@ public class HelloWorld
             .GroupBy(word => word)
             .Select(group => new { Word = group.Key, Count = group.Count() })
             .OrderByDescending(x => x.Count)
-            //.ThenBy(x => x.Word)
             .ToList();
-            
-     List<string> result = new List<string> {};
 
-    int top = 0;
-    int second = 0;
-    int third = 0;
-    
-    string topWord = "";
-    string secondWord = "";
-    string thirdWord = "";
-    
+        List<string> result = new List<string> { };
 
-    
-      foreach(var word in groupedItems)
-      {
-        if(word.Count >= top)
+        int top = -1;
+        int second = -1;
+        int third = -1;
+
+        var topWord = groupedItems.FirstOrDefault();
+        foreach (var word in groupedItems)
         {
-            top = word.Count;
-            topWord = word.Word;
+            if (word.Count >= top)
+            {
+                top = word.Count;
+                topWord = word;
+            }
         }
-      }
-      if(!string.IsNullOrEmpty(topWord) && !topWord.All(c => c == '\''))
-      result.Add(topWord);
-      groupedItems.RemoveAll(item => item.Word == topWord);
-      Console.WriteLine("top: " + topWord);
-      foreach(var item in groupedItems)
-      Console.Write(item.Word + ":" + item.Count+ " ");
-      Console.WriteLine();
-      foreach(var word in groupedItems)
-      {
-        if(word.Count >= second && word.Count <= top)
+        if (topWord != null && !topWord.Word.All(c => c == '\''))
         {
-            //top = word.Count;
-            second = word.Count;
-            secondWord = word.Word;
+            result.Add(topWord.Word);
+            groupedItems.Remove(topWord);
+            Console.WriteLine("top: " + topWord.Word);
+            foreach (var item in groupedItems)
+                Console.Write(item.Word + ":" + item.Count + " ");
+            Console.WriteLine();
         }
-      }
-      if(!string.IsNullOrEmpty(secondWord) && !secondWord.All(c => c == '\''))
-      result.Add(secondWord);
-      groupedItems.RemoveAll(item => item.Word == secondWord);
-      Console.WriteLine("Second: " + secondWord);
-      foreach(var item in groupedItems)
-      Console.Write(item.Word + ":" + item.Count+ " ");
-      Console.WriteLine();
+
+
+
+        var secondWord = groupedItems.FirstOrDefault();
+        foreach (var word in groupedItems)
+        {
+            if (word.Count >= second && word.Count <= top)
+            {
+                //top = word.Count;
+                second = word.Count;
+                secondWord = word;
+            }
+        }
+        if (secondWord != null && !secondWord.Word.All(c => c == '\''))
+        {
+            result.Add(secondWord.Word);
+            groupedItems.Remove(secondWord);
+            Console.WriteLine("Second: " + secondWord.Word);
+            foreach (var item in groupedItems)
+                Console.Write(item.Word + ":" + item.Count + " ");
+            Console.WriteLine();
+        }
+
+ var thirdWord = groupedItems.FirstOrDefault();
         foreach (var word in groupedItems)
         {
             if (word.Count >= third && word.Count <= second)
             {
                 //top = word.Count;
                 third = word.Count;
-                thirdWord = word.Word;
+                thirdWord = word;
             }
         }
-        if(!string.IsNullOrEmpty(thirdWord)&& !thirdWord.All(c => c == '\''))
-        result.Add(thirdWord);
-        Console.WriteLine("Third: " + thirdWord);
-      foreach(var item in groupedItems)
-      Console.Write(item.Word + ":" + item.Count+ " ");
-      Console.WriteLine();
-       
-      foreach(var item in result)
-      Console.Write(item + " ");
-      
+        if (thirdWord!=null && !thirdWord.Word.All(c => c == '\''))
+        {
+ result.Add(thirdWord.Word);
+        Console.WriteLine("Third: " + thirdWord.Word);
+        foreach (var item in groupedItems)
+            Console.Write(item.Word + ":" + item.Count + " ");
+        Console.WriteLine();
+        }
+           
+
+        foreach (var item in result)
+            Console.Write(item + " ");
+
     }
 }
 
