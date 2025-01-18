@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -82,7 +82,7 @@ public class HelloWorld
       Console.WriteLine();
        
       foreach(var item in result)
-      Console.Write(item + ", ");
+      Console.Write(item + " ");
       
     }
 }

@@ -1,0 +1,15 @@
+G:\Study\most-f-words\bin\Debug\net8.0\most-f-words.exe
+G:\Study\most-f-words\bin\Debug\net8.0\most-f-words.deps.json
+G:\Study\most-f-words\bin\Debug\net8.0\most-f-words.runtimeconfig.json
+G:\Study\most-f-words\bin\Debug\net8.0\most-f-words.dll
+G:\Study\most-f-words\bin\Debug\net8.0\most-f-words.pdb
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.GeneratedMSBuildEditorConfig.editorconfig
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.AssemblyInfoInputs.cache
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.AssemblyInfo.cs
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.csproj.CoreCompileInputs.cache
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.sourcelink.json
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.dll
+G:\Study\most-f-words\obj\Debug\net8.0\refint\most-f-words.dll
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.pdb
+G:\Study\most-f-words\obj\Debug\net8.0\most-f-words.genruntimeconfig.cache
+G:\Study\most-f-words\obj\Debug\net8.0\ref\most-f-words.dll
