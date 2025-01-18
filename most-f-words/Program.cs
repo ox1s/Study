@@ -23,14 +23,15 @@ public class HelloWorld
 
         List<string> result = new List<string> { };
 
-        int top = -1;
+        /* int top = -1;
         int second = -1;
         int third = -1;
 
-        var topWord = groupedItems.FirstOrDefault();
+        var topWord = groupedItems.OrderByDescending(w => w.Count).FirstOrDefault();
         foreach (var word in groupedItems)
         {
             if (word.Count >= top)
+
             {
                 top = word.Count;
                 topWord = word;
@@ -48,12 +49,11 @@ public class HelloWorld
 
 
 
-        var secondWord = groupedItems.FirstOrDefault();
+        var secondWord = groupedItems.OrderByDescending(w => w.Count).FirstOrDefault();
         foreach (var word in groupedItems)
         {
-            if (word.Count >= second && word.Count <= top)
+            if (word.Count > second && word.Count <= top)
             {
-                //top = word.Count;
                 second = word.Count;
                 secondWord = word;
             }
@@ -68,7 +68,7 @@ public class HelloWorld
             Console.WriteLine();
         }
 
- var thirdWord = groupedItems.FirstOrDefault();
+        var thirdWord = groupedItems.OrderByDescending(w => w.Count).FirstOrDefault();
         foreach (var word in groupedItems)
         {
             if (word.Count >= third && word.Count <= second)
@@ -78,19 +78,52 @@ public class HelloWorld
                 thirdWord = word;
             }
         }
-        if (thirdWord!=null && !thirdWord.Word.All(c => c == '\''))
+        if (thirdWord != null && !thirdWord.Word.All(c => c == '\''))
         {
- result.Add(thirdWord.Word);
-        Console.WriteLine("Third: " + thirdWord.Word);
-        foreach (var item in groupedItems)
-            Console.Write(item.Word + ":" + item.Count + " ");
-        Console.WriteLine();
+            result.Add(thirdWord.Word);
+            Console.WriteLine("Third: " + thirdWord.Word);
+            foreach (var item in groupedItems)
+                Console.Write(item.Word + ":" + item.Count + " ");
+            Console.WriteLine();
         }
-           
+
+
 
         foreach (var item in result)
-            Console.Write(item + " ");
+            Console.Write(item + " "); */
+        var topWord = groupedItems
+                   .Where(w => !w.Word.All(c => c == '\''))
+                   .OrderByDescending(w => w.Count)
+                   .FirstOrDefault();
 
+        if (topWord != null)
+        {
+            result.Add(topWord.Word);
+            groupedItems.Remove(topWord);
+        }
+
+        var secondWord = groupedItems
+            .Where(w => !w.Word.All(c => c == '\''))
+            .OrderByDescending(w => w.Count)
+            .FirstOrDefault();
+
+        if (secondWord != null)
+        {
+            result.Add(secondWord.Word);
+            groupedItems.Remove(secondWord);
+        }
+
+        var thirdWord = groupedItems
+            .Where(w => !w.Word.All(c => c == '\''))
+            .OrderByDescending(w => w.Count)
+            .FirstOrDefault();
+
+        if (thirdWord != null)
+        {
+            result.Add(thirdWord.Word);
+        }
+        foreach (var item in result)
+            Console.Write(item + " "); 
     }
 }
 
