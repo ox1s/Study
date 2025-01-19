@@ -1,0 +1,13 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public class ListFilterer
+{
+   public static IEnumerable<int> GetIntegersFromList(List<object> listOfItems)
+   {
+     return listOfItems.Where(item => item.GetType() == typeof(int)).Select(c => (int)c).ToList();
+      
+   }
+}

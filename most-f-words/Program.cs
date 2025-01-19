@@ -6,7 +6,7 @@ public class HelloWorld
 {
     public static void Main(string[] args)
     {
-        string s = "ldgpx'gq pexxertr qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaad";
+        /* string s = "ldgpx'gq pexxertr qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaadw' qkaad";
         Console.WriteLine("Input: " + s);
         List<string> input = new List<string>(s.ToLower().Split(' '));
 
@@ -90,7 +90,7 @@ public class HelloWorld
 
 
         foreach (var item in result)
-            Console.Write(item + " "); */
+            Console.Write(item + " "); 
         var topWord = groupedItems
                    .Where(w => !w.Word.All(c => c == '\''))
                    .OrderByDescending(w => w.Count)
@@ -123,8 +123,10 @@ public class HelloWorld
             result.Add(thirdWord.Word);
         }
         foreach (var item in result)
-            Console.Write(item + " "); 
-    }
+            Console.Write(item + " "); */
+
+            
+    } 
 }
 
 
