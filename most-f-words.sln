@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "most-f-words", "most-f-words\most-f-words.csproj", "{037473DE-DE1E-4758-8E08-E76FA3FA72F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms", "Algorithms\Algorithms.csproj", "{90A47740-E1CE-4A06-AF32-5F6771601B4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{037473DE-DE1E-4758-8E08-E76FA3FA72F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037473DE-DE1E-4758-8E08-E76FA3FA72F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037473DE-DE1E-4758-8E08-E76FA3FA72F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90A47740-E1CE-4A06-AF32-5F6771601B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90A47740-E1CE-4A06-AF32-5F6771601B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90A47740-E1CE-4A06-AF32-5F6771601B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90A47740-E1CE-4A06-AF32-5F6771601B4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

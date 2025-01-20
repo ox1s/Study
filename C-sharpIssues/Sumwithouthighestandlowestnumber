@@ -1,0 +1,29 @@
+using System;
+using System.Linq;
+
+public static class Kata
+{
+  public static int Sum(int[] numbers)
+  {
+    return numbers!=null ? numbers
+      .GroupBy(n => n)
+      .Where(n => n.Key != numbers.Min() && n.Key!=numbers.Max() && n.Count()==1 )
+      .Select(n=>n.Key)
+      .Sum() + numbers
+      .GroupBy(n => n)
+      .Where(n => (n.Key == numbers.Min() || n.Key==numbers.Max()) && n.Count()==2 )
+      .Select(n=>n.Key)
+      .Sum() :0 ;
+  }
+}
+_________________________
+using System;
+using System.Linq;
+
+public static class Kata
+{
+  public static int Sum(int[] numbers)
+  {
+    return numbers != null && numbers.Length > 2 ? numbers.Sum() - numbers.Min() - numbers.Max() : 0;
+  }
+}

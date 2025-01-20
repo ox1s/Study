@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+public class CountIPAddresses
+{
+    public static long IpsBetween(string start, string end)
+    {
+        int[] startArr = Array.ConvertAll(start.Split('.'), int.Parse);
+        for (int i = 0; i < startArr.Length(); i++)
+        {
+            if (startArr[i] >= byte.MinValue && startArr[i] <= byte.MaxValue)
+            {
+                startArr[i] = (byte)startArr[i];
+            }
+        }
+
+        int[] endArr = Array.ConvertAll(end.Split('.'), int.Parse);
+        for (int i = 0; i < endArr.Length(); i++)
+        {
+            if (endArr[i] >= byte.MinValue && endArr[i] <= byte.MaxValue)
+            {
+                endArr[i] = (byte)endArr[i];
+            }
+        }
+
+        foreach (var item in startArr)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+        foreach (var item in endArr)
+        {
+            Console.Write(item + " ");
+        }
+        Console.WriteLine();
+
+    }
+    public static void Main(string[] args)
+    {
+        Console.WriteLine(CountIPAddresses.IpsBetween("10.0.0.0", "10.0.0.50"));
+    }
+
+}

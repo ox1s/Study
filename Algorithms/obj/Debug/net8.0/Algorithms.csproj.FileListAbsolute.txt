@@ -1,0 +1,15 @@
+G:\Study\Algorithms\bin\Debug\net8.0\Algorithms.exe
+G:\Study\Algorithms\bin\Debug\net8.0\Algorithms.deps.json
+G:\Study\Algorithms\bin\Debug\net8.0\Algorithms.runtimeconfig.json
+G:\Study\Algorithms\bin\Debug\net8.0\Algorithms.dll
+G:\Study\Algorithms\bin\Debug\net8.0\Algorithms.pdb
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.GeneratedMSBuildEditorConfig.editorconfig
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.AssemblyInfoInputs.cache
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.AssemblyInfo.cs
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.csproj.CoreCompileInputs.cache
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.sourcelink.json
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.dll
+G:\Study\Algorithms\obj\Debug\net8.0\refint\Algorithms.dll
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.pdb
+G:\Study\Algorithms\obj\Debug\net8.0\Algorithms.genruntimeconfig.cache
+G:\Study\Algorithms\obj\Debug\net8.0\ref\Algorithms.dll

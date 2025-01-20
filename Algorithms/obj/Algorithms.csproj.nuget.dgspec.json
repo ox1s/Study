@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "g:\\Study\\most-f-words\\most-f-words.csproj": {}
+    "G:\\Study\\Algorithms\\Algorithms.csproj": {}
   },
   "projects": {
-    "g:\\Study\\most-f-words\\most-f-words.csproj": {
+    "G:\\Study\\Algorithms\\Algorithms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "g:\\Study\\most-f-words\\most-f-words.csproj",
-        "projectName": "most-f-words",
-        "projectPath": "g:\\Study\\most-f-words\\most-f-words.csproj",
+        "projectUniqueName": "G:\\Study\\Algorithms\\Algorithms.csproj",
+        "projectName": "Algorithms",
+        "projectPath": "G:\\Study\\Algorithms\\Algorithms.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "g:\\Study\\most-f-words\\obj\\",
+        "outputPath": "G:\\Study\\Algorithms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
