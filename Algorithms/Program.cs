@@ -1,26 +1,8 @@
 ﻿// АЛГОРИТМЫ
 
-// 1. Бинарный поиск - O(log n)
-static int binarySearch(int[] numbers, int num)
-{
-    int left = 0;
-    int right = numbers.Length - 1;
-    while (left < right)
-    {
-        int mid = (left + right) / 2;
-        int guess = numbers[mid];
-        if (guess == num)
-            return mid;
-        else if (guess > num)
-            right = mid - 1;
-        else
-            left = mid + 1;
-    }
-    return -1;
-}
 
-// 2. Сортировка выбором - O(n^2)
 
+// 1. Сортировка выбором - O(n^2)
 static int[] selectionSort(int[] arr)
 {
     int[] newArr = new int[arr.Length]; // Создаем новый массив с количеством элементов заданного
@@ -41,7 +23,24 @@ static int[] selectionSort(int[] arr)
     }
     return newArr;
 }
-
+// 2. Бинарный поиск - O(log n)
+static int binarySearch(int[] numbers, int num)
+{
+    int left = 0;
+    int right = numbers.Length - 1;
+    while (left <= right)
+    {
+        int mid = (left + right) / 2;
+        int guess = numbers[mid];
+        if (guess == num)
+            return mid;
+        else if (guess > num)
+            right = mid - 1;
+        else
+            left = mid + 1;
+    }
+    return -1;
+}
 // ---------------
 // Разделяй и властвуй!
 
@@ -93,17 +92,42 @@ static int MinWithoutSkip(int[] arr, int index = 0)
     if (index == arr.Length - 1)
         return arr[index];
 
-    int subMax = MinWithoutSkip(arr, index + 1);
-    return arr[index] < subMax ? arr[index] : subMax;
+    int subMin = MinWithoutSkip(arr, index + 1);
+    return arr[index] < subMin ? arr[index] : subMin;
 }
+
+// 4. Быстрая сортировка - О(n*log n)
+static int[] QuickSort(int[] arr)
+
 
 
 int[] nums = { 1, 3, 7, 5 };
 
+Console.WriteLine("Введите число из массива {" + string.Join(", ", nums) + "} = индекс которого хотите получить");
+string? input = Console.ReadLine();
+if (int.TryParse(input, out int n))
+{
+    // Преобразование прошло успешно, n содержит значение
+    Console.WriteLine($"Вы ввели число: {n}");
+}
+else
+{
+    // Преобразование не удалось
+    Console.WriteLine("Ошибка: введено не число.");
+}
+Console.Write("Загрузка: [");
+int total = 30; // Длина прогресс-бара
+for (int i = 0; i <= total; i++)
+{
+    Console.Write("#");
+    Thread.Sleep(100); // Задержка в 100 миллисекунд
+}
+Console.WriteLine("] Загрузка завершена!");
 
-Console.WriteLine("1. Бинарный поиск индекса числа -1 в массиве - {" + string.Join(", ", nums) + "} = " + binarySearch(nums, -1));
-Console.WriteLine("2. Сортировка выбором в массиве - {" + string.Join(", ", nums) + "} = " + string.Join(", ", selectionSort(nums)));
 
+Console.WriteLine("1. Сортировка выбором в массиве - {" + string.Join(", ", nums) + "} = " + "{" + string.Join(", ", selectionSort(nums)) + "}");
+Console.WriteLine("2. Бинарный поиск индекса числа " + n + " в массиве - {" + string.Join(", ", selectionSort(nums)) + "} = " + binarySearch(selectionSort(nums), n));
+Console.WriteLine("--------------- \nРазделяй и властвуй!");
 Console.WriteLine("1. Сумма чисел массива - {" + string.Join(", ", nums) + "} = " + Sum(nums));
 Console.WriteLine("2. Рекурсивная функция для подсчета элементов в массиве - {" + string.Join(", ", nums) + "} = " + CountElements(nums));
 Console.WriteLine("3.а) Рекурсивная функция для нахождения максимального числа в массиве - {" + string.Join(", ", nums) + "} = " + Max(nums));
