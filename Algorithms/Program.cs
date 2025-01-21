@@ -3,6 +3,8 @@
 
 
 // 1. Сортировка выбором - O(n^2)
+using System.Runtime.InteropServices.Marshalling;
+
 static int[] selectionSort(int[] arr)
 {
     int[] newArr = new int[arr.Length]; // Создаем новый массив с количеством элементов заданного
@@ -97,7 +99,11 @@ static int MinWithoutSkip(int[] arr, int index = 0)
 }
 
 // 4. Быстрая сортировка - О(n*log n)
-static int[] QuickSort(int[] arr)
+static int[] QuickSort(int[] arr, int left, int right)
+{
+    if(left < right)
+
+}
 
 
 

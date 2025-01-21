@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("most-f-words")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+34c3d081d4b3befea709c66ba86cc8af14c66d4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+114ca6ce9697302b3c34399c6d04d32cdd83bfe0")]
 [assembly: System.Reflection.AssemblyProductAttribute("most-f-words")]
 [assembly: System.Reflection.AssemblyTitleAttribute("most-f-words")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
