@@ -99,12 +99,12 @@ static int MinWithoutSkip(int[] arr, int index = 0)
 }
 
 // 4. Быстрая сортировка - О(n*log n)
-static int[] QuickSort(int[] arr, int left, int right)
+/* static int[] QuickSort(int[] arr, int left, int right)
 {
     if(left < right)
 
 }
-
+ */
 
 
 int[] nums = { 1, 3, 7, 5 };

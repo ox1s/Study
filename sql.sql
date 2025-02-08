@@ -45,13 +45,48 @@ SELECT bool,
         ELSE 'No'
     END AS res
 FROM booltoword;
-
 -- # write your SQL statement here: you are given a table 'love' with columns 'flower1' and 'flower2', return a table with columns ('flower1' and 'flower2') and your result in a column named 'res'.
 SELECT flower1, 
        flower2, 
        flower1 % 2 != flower2 % 2 AS res
 FROM love;
-
 --# write your statement here: you will be given a table 'moves' with columns 'position' and 'roll'. return a table with a column 'res'. #--
 SELECT position+roll*2 AS res
 FROM moves;
+--# write your SQL statement here: you are given a table 'repeatstr' with columns 'n' and 's', return a table with all columns and your result in a column named 'res'.
+SELECT s,n, 
+       REPEAT(s, n) AS res 
+FROM repeatstr
+--# for this challenge you need to create a simple SELECT statement that will return all columns from the people table WHERE their age is over 50
+SELECT * FROM people
+WHERE age>50
+ORDER BY age DESC
+/*Given a demographics table in the following format:
+ ** demographics table schema **
+id
+name
+birthday
+race
+you need to return a table that shows a count of each race represented, ordered by the count in descending order as:
+** output table schema **
+race 
+count*/
+SELECT race, COUNT(race) AS count
+FROM demographics
+GROUP BY race
+ORDER BY count DESC
+/*
+Given a demographics table in the following format:
+** demographics table schema **
+id
+name
+birthday
+race
+you need to return the same table where all text fields (name & race) are changed to the bit length of the string.
+*/
+SELECT 
+  id,
+  BIT_LENGTH(name) AS name,
+  birthday,
+  BIT_LENGTH(race) AS race
+FROM demographics;
