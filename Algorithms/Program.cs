@@ -3,7 +3,6 @@
 
 
 // 1. Сортировка выбором - O(n^2)
-using System.Runtime.InteropServices.Marshalling;
 
 static int[] selectionSort(int[] arr)
 {
