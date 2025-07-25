@@ -4,40 +4,35 @@
 
 void pow_mod(unsigned *arr, unsigned k, unsigned m)
 {
-    unsigned mult[4], prod[4] = {1,0,0,1};
-    for (int i = 0; i < 4; ++i)
+    unsigned mult[4];
+    for (int i = 0; i < 3; ++i)
         mult[i] = arr[i] % m;
-
 
     while (k > 0) {
         if (k % 2 == 1) {
-            unsigned tmp[4] = { 0 };
+	    unsigned tmp[4] = {0};
 
             for (int i = 0; i < 2; ++i)
                 for (int j = 0; j < 2; ++j)
-                    for (int q = 0; q < 2; ++q) 
-                        tmp[i * 2 + j] = (tmp[i * 2 + j] + prod[i * 2 + q] * mult[q * 2 + j]) % m;
+                    for (int q = 0; q < 2; ++q)
+                        tmp[i * 2 + j] += (arr[i * 2 + q] * mult[q * 2 + j]) % m;
 
             for (int i = 0; i < 4; ++i)
-                prod[i] = tmp[i];
+                arr[i] = tmp[i]%m;
 
             k -= 1;
         }
-
-        unsigned tmp[4] = { 0 };
+	unsigned tmp[4] = {0};
 
         for (int i = 0; i < 2; ++i)
             for (int j = 0; j < 2; ++j)
-                for (int q = 0; q < 2; ++q)
-                    tmp[i * 2 + j] = (tmp[i * 2 + j] + mult[i * 2 + q] * mult[q * 2 + j]) % m;
+                for (int q = 0; q < 2; ++q) 
+                    tmp[i * 2 + j] += (mult[i * 2 + q] * mult[q * 2 + j]) % m;
 
         for (int i = 0; i < 4; ++i)
-            mult[i] = tmp[i];
-
+            mult[i] = tmp[i]%m;
         k /= 2;
     }
-    for (int i = 0; i < 4; ++i)
-	    arr[i] = prod[i];
 }
 
 void fib_mod(unsigned long long n, unsigned m, unsigned *arr)
@@ -54,10 +49,9 @@ void fib_mod(unsigned long long n, unsigned m, unsigned *arr)
             }
         } else
             pow_mod(arr, n, m);
-    } 
-    else {
-	    arr[0] = 1; arr[1] = 0; arr[2] = 0; arr[3] = 1;
-    }
+    } else
+        for (int i = 0; i < 4; ++i)
+            arr[i] = 1;
 }
 
 int main()
