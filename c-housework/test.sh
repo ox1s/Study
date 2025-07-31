@@ -59,6 +59,7 @@ do
 	ans_file="${test_file%.dat}.ans"
 	base_name=$(basename "$test_file")
 	program_output=$(./"$EXEC_NAME" < "$test_file")
+	program_input=$(cat "$test_file")
 	if [ -f "$ans_file" ]
 	then
 		expected_output=$(cat "$ans_file")
@@ -68,6 +69,7 @@ do
 			if [[ "$SHOW_DETAILS" == "y" ]]
 			then
 				echo -e "\n${BOLD}Тест: ${test_file}${NC}"
+				echo -e "Ввод программы:$program_input\n"
                 		echo -e "${GREEN}✅ ОК${NC}"
                 		echo -e "${YELLOW}Вывод программы:${NC}\n$program_output"
            		else
@@ -76,6 +78,7 @@ do
 		else
 			((failed_count++))
 			echo -e "\n${BOLD}Тест: ${test_file}${NC}"
+			echo -e "Ввод программы:$program_input\n"
             		echo -e "${RED}Вывод программы:${NC}\n$program_output"
             		echo -e "${RED}❌ Неправильно! Ожидалось согласно $(basename "$ans_file"):${NC}\n$expected_output"
 		fi
