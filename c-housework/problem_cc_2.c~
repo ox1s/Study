@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+
+/*
+Problem СС -- циркулярные простые
+v2.0 - использование комбинации (v1.0 problem_cc.c)
+*/
+struct sieve_t {
+    int n;
+    char *s;
+};
+
+void fill_sieve(struct sieve_t *sv)
+{
+    for (long i = 2; i * i < (*sv).n; ++i)
+        if ((*sv).s[i] != 1)
+            for (long j = i * i; j < (*sv).n; j += i)
+                (*sv).s[j] = 1;
+}
+
+struct sieve_t *init_sieve(int n)
+{
+    struct sieve_t *s = malloc(sizeof(struct sieve_t));
+    s->n = n;
+    s->s = (char *) calloc(s->n, sizeof(char));
+    fill_sieve(s);
+    return s;
+}
+
+void free_sieve(struct sieve_t *s)
+{
+    if (s == NULL)
+        return;
+    free(s->s);
+    free(s);
+}
+
+int is_prime(unsigned n)
+{
+    if ((n == 2) || (n == 3))
+        return 1;
+    if ((n < 2) || ((n % 2) == 0) || ((n % 3) == 0))
+        return 0;
+
+    for (int j = 5; j * j <= n; j += 6)
+        if (((n % j) == 0) || ((n % (j + 2)) == 0))
+            return 0;
+
+    return 1;
+}
+
+int check_number_permutations(unsigned n, char fast, struct sieve_t *sv)
+{
+    unsigned n_tmp = n, count = 0, num = 0, dec = 1;
+    while (n_tmp != 0) {
+        n_tmp = n_tmp / 10;
+        dec = dec * 10;
+	++count;
+    }
+    dec = dec / 10;
+
+    n_tmp = n;
+    for (unsigned i = 0; i < count; ++i) {
+        num = n_tmp / dec;
+        n_tmp = n_tmp % dec;
+        n_tmp = n_tmp * 10 + num;
+        if ((fast == 0 && (is_prime(n_tmp) == 0 || n_tmp < dec)) || (fast == 1 && (sv->s[n_tmp] == 1 || n_tmp < dec)))
+            return 0;
+    }
+    return 1;
+
+}
+
+unsigned find_closest_circular(unsigned n)
+{
+    unsigned border = 200;
+    unsigned r = 0;
+    for (; r<=border; ++r){
+        if (is_prime(n - r) == 1 && check_number_permutations(n - r, 0, NULL) == 1)
+            return n - r;
+	else if ((n + r) >= 2 && is_prime(n+r) == 1
+            && check_number_permutations(n + r, 0, NULL) == 1)
+            return n + r;
+    }
+    struct sieve_t *sv;
+
+    sv = init_sieve(1000000);
+    
+    unsigned res = 0;
+    while (1) {
+	if (sv->s[n- r] == 0 && check_number_permutations(n - r, 1, sv) == 1) {            res = n - r;
+break;
+	}
+	else if ((n + r) >= 2 && sv->s[n+r] == 0
+            && check_number_permutations(n + r, 1, sv) == 1)
+	{ res = n + r; break;}
+	++r;
+    }
+
+    free_sieve(sv);
+    return res;
+}
+
+
+int main()
+{
+    unsigned N;
+    
+    int res = scanf("%u", &N);
+    if (res != 1) {
+        printf("Wrong input!");
+        abort();
+    }
+
+    unsigned cc = find_closest_circular(N);
+    printf("%d", cc);
+
+    return 0;
+}
