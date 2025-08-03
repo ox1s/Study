@@ -1,0 +1,66 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+struct sieve_t {
+    int n;
+    char *s;
+};
+
+int sieve_bound(int num)
+{
+    double dnum, dres;
+    if (num <= 20)
+        return 100;
+    dnum = num;
+    dres = dnum * (log(dnum) + log(log(dnum)));
+    return (int) round(dres);
+}
+
+void fill_sieve(struct sieve_t *s);
+int nth_prime(struct sieve_t *s, int N);
+
+int main()
+{
+    int n, outp;
+    int res;
+    struct sieve_t *s;
+
+    res = scanf("%d", &n);
+    assert(res == 1);
+    s = (struct sieve_t *) malloc(sizeof(struct sieve_t));
+    s->n = sieve_bound(n);
+    s->s = (char *) calloc(s->n, sizeof(char));
+
+    fill_sieve(s);
+    outp = nth_prime(s, n);
+    printf("%d\n", outp);
+
+    free(s->s);
+    free(s);
+}
+
+#line 10000
+
+
+void fill_sieve(struct sieve_t *sv)
+{
+    for (long i = 2; i * i < (*sv).n; ++i)
+        if ((*sv).s[i] != 1)
+            for (long j = i * i; j < (*sv).n; j += i)
+                (*sv).s[j] = 1;
+
+}
+
+int nth_prime(struct sieve_t *sv, int N)
+{
+    unsigned i = 0, j = 1;
+    while (i < N) {
+        ++j;
+        if (sv->s[j] == 0)
+            i++;
+    }
+    return j;
+
+}

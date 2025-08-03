@@ -1,0 +1,125 @@
+#include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
+
+/*
+Problem СС -- циркулярные простые
+
+Число 197 называется циркулярным простым, поскольку простыми являются все циклические перестановки его разрядов: 197 -> 971 -> 719
+
+Необходимо для заданного числа N определить ближайшее к нему циркулярное простое. Например для числа 200 ближайшим циркулярным простым будет 197
+
+Посылка должна состоять из программы, считывающей со стандартного ввода число N и выводящей на стандартный вывод ближайшее к нему циркулярное простое число P
+
+Вы можете предполагать, что N < 10^6
+*/
+struct sieve_t {
+    int n;
+    char *s;
+};
+
+void fill_sieve(struct sieve_t *sv)
+{
+    for (long i = 2; i * i < (*sv).n; ++i)
+        if ((*sv).s[i] != 1)
+            for (long j = i * i; j < (*sv).n; j += i)
+                (*sv).s[j] = 1;
+}
+
+struct sieve_t *init_sieve(int n)
+{
+    struct sieve_t *s = malloc(sizeof(struct sieve_t));
+    s->n = n;
+    s->s = (char *) calloc(s->n, sizeof(char));
+    fill_sieve(s);
+    return s;
+}
+
+void free_sieve(struct sieve_t *s)
+{
+    if (s == NULL)
+        return;
+    free(s->s);
+    free(s);
+}
+
+int is_prime(unsigned n)
+{
+    if ((n == 2) || (n == 3))
+        return 1;
+    if ((n < 2) || ((n % 2) == 0) || ((n % 3) == 0))
+        return 0;
+
+    for (int j = 5; j * j <= n; j += 6)
+        if (((n % j) == 0) || ((n % (j + 2)) == 0))
+            return 0;
+
+    return 1;
+}
+
+int check_number_permutations(struct sieve_t *sv, unsigned n)
+{
+    unsigned n_tmp = n, count = 0, num = 0, dec = 1;
+    while (n_tmp != 0) {
+        n_tmp = n_tmp / 10;
+        dec = dec * 10;
+	++count;
+    }
+    dec = dec / 10;
+#if 0
+    printf("Число %u, цифр в числе - %u\n", n, count);
+#endif
+    n_tmp = n;
+    for (unsigned i = 0; i < count; ++i) {
+        num = n_tmp / dec;
+        n_tmp = n_tmp % dec;
+#if 0
+	printf("Число %u без первого числа - %u\n", n, n_tmp);
+#endif
+
+        n_tmp = n_tmp * 10 + num;
+#if 0
+	printf("Число %u после циклической перестановки - %u\n", n, n_tmp);
+#endif
+        if (sv->s[n_tmp] == 1 || n_tmp < dec)
+            return 0;
+    }
+    return 1;
+
+}
+
+unsigned find_closest_circular(unsigned n, struct sieve_t *sv)
+{
+    unsigned r = 0;
+    while (1) {
+        if (sv->s[n - r] == 0 && check_number_permutations(sv, n - r) == 1)
+            return n - r;
+	else if ((n + r) >= 2 && sv->s[n + r] == 0
+            && check_number_permutations(sv, n + r) == 1)
+            return n + r;
+	else 
+		++r;
+    }
+
+    return 7;
+}
+
+
+int main()
+{
+    unsigned N;
+    struct sieve_t *s;
+
+    int res = scanf("%u", &N);
+    if (res != 1) {
+        printf("Wrong input!");
+        abort();
+    }
+
+    s = init_sieve(1000000);
+    unsigned cc = find_closest_circular(N, s);
+    printf("%d", cc);
+
+    free_sieve(s);
+    return 0;
+}

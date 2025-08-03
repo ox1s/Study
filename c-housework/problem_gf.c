@@ -1,0 +1,80 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/*
+Ваша задача найти длину самой длинной последовательности положительных простых чисел, которую можно сгенерировать с помощью формулы n^2 + a*n + b, в предположеннии, что |a| < N и |b| < N
+
+Обратите внимание: эти числа не обязаны быть последовательно возрастающими или убывающими. Слово последовательность здесь употребляется в том смысле, что, начиная с n = 0, и до некоторого числа, каждое очередное число оказывается простым. Например 3, 17, 17, 31, 5 это последовательность из пяти простых
+
+Посылка должна состоять из программы, считывающей со стандартного ввода число N и выводящей на стандартный вывод три числа: a, b и длину наибольшей последовательности
+*/
+struct sieve_t {
+    int n;
+    char *s;
+};
+
+void fill_sieve(struct sieve_t *sv)
+{
+    for (long i = 2; i * i < (*sv).n; ++i)
+        if ((*sv).s[i] != 1)
+            for (long j = i * i; j < (*sv).n; j += i)
+                (*sv).s[j] = 1;
+}
+
+
+void find_max_seq(int n, struct sieve_t *sv)
+{
+    int count = 0;
+    int max_count = count;
+    int res_a = 0, res_b = 0;
+
+    for (int b = 2; b < n; ++b) {
+        if (b >= 0 && b < sv->n && sv->s[b] == 0) {
+            for (int a = -1 * (n - 1); a < n; ++a) {
+                count = 0;
+
+                for (int i = 0;; ++i) {
+
+                    int tmp = i * i + a * i + b;
+                    if (tmp >= 0 && tmp < sv->n && sv->s[tmp] == 0) {
+                        count++;
+                    } else
+                        break;
+                }
+                if (count > max_count) {
+                    max_count = count;
+                    res_a = a;
+                    res_b = b;
+                }
+
+            }
+        }
+    }
+    printf("%d %d %d", res_a, res_b, max_count);
+}
+
+
+int main()
+{
+    int N;
+    struct sieve_t *s;
+
+    int res = scanf("%u", &N);
+    if (res != 1) {
+        printf("Wrong input!");
+        abort();
+    }
+
+    int max_i = 500;
+    s = (struct sieve_t *) malloc(sizeof(struct sieve_t));
+    s->n = max_i * max_i + N * max_i + N;
+    s->s = (char *) calloc(s->n, sizeof(char));
+    fill_sieve(s);
+
+    find_max_seq(N, s);
+
+    free(s->s);
+    free(s);
+    return 0;
+}
