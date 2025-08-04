@@ -17,58 +17,53 @@ Problem LM -- наименьшее общее кратное
 
 int iabs(int x)
 {
-    return (x < 0) ? -x : x;
+        return (x < 0) ? -x : x;
 }
-
 int eu_mod(int x, int y)
 {
-    int r;
-    assert(y != 0);
-    r = x % y;
-    if (r < 0)
-        r += iabs(y);
-    return r;
+        int r;
+        assert(y!=0);
+        r = x%y;
+        if (r<0) r+= iabs(y);
+        return r;
 }
+unsigned long long gcd(unsigned long long x,
+                        unsigned long long y) {
+        unsigned long long q;
 
-unsigned long long gcd(unsigned long long x, unsigned long long y)
-{
-    unsigned long long q;
+        if (y > x)
+                return gcd(y, x);
+        assert(y > 0);
 
-    if (y > x)
-        return gcd(y, x);
-    assert(y > 0);
-
-    q = eu_mod(x, y);
-    for (; q != 0;) {
-        x = y;
-        y = q;
-        q = eu_mod(x, y);
-    }
-    return y;
+        q = eu_mod(x,y);
+        for (; q != 0;)
+        {
+                x = y;
+                y = q;
+                q = eu_mod(x,y);
+        }
+        return y;
 
 }
+unsigned lcm(unsigned long long n){
+	unsigned long long tmp = 2;
+	for (unsigned long long i = 3; i <= n; ++i) {
+		tmp = (tmp * i) / gcd(tmp, i);
 
-unsigned lcm(unsigned long long n)
-{
-    unsigned long long tmp = 2;
-    for (unsigned long long i = 3; i <= n; ++i) {
-        tmp = (tmp * i) / gcd(tmp, i);
-
-    }
-    return tmp;
+	}
+	return tmp;
 }
 
 
-int main()
-{
-    unsigned long long N;
+int main() {
+	unsigned long long N;
 
-    int res = scanf("%llu", &N);
-    if (res != 1) {
-        printf("Wrong input!");
-        abort();
-    }
-    unsigned l = lcm(N);
-    printf("%u", l);
+	int res = scanf("%llu", &N);
+	if (res != 1) {
+		printf("Wrong input!");
+		abort();
+	}
+	unsigned l = lcm(N);
+	printf("%u", l);
 
 }
