@@ -8,7 +8,6 @@ struct sieve_t {
     int n;
     char *s;
 };
-
 int sieve_bound(int num)
 {
     double dnum, dres;
@@ -18,9 +17,51 @@ int sieve_bound(int num)
     dres = dnum * (log(dnum) + log(log(dnum)));
     return (int) round(dres) + 1;
 }
+void fill_sieve(struct sieve_t *sv)
+{
+    for (int i = 0; i * i < sv->n * CHAR_BIT; ++i) {
+        if (i <= 1)
+            sv->s[i / 8] = sv->s[i / 8] | (1 << i % 8);
 
-void fill_sieve(struct sieve_t *s);
-int is_prime(struct sieve_t *sv, unsigned n);
+        if (((sv->s[i / 8] >> i % 8) & 1) != 1)
+            for (int j = i * i; j < sv->n * CHAR_BIT; j += i)
+                sv->s[j / 8] = sv->s[j / 8] | (1 << j % 8);
+    }
+
+}
+int is_prime(struct sieve_t *sv, unsigned n)
+{
+    return !((sv->s[n / 8] >> n % 8) & 1);
+}
+int nth_prime(struct sieve_t *s, int N)
+{
+    int cnt, p;
+    if (N == 1)
+        return 2;
+    if (N == 2)
+        return 3;
+
+    cnt = 2;
+    p = 5;
+
+    for (; ; ) {
+        if (is_prime(s, p)) {
+            cnt += 1;
+            if (cnt == N)
+                break;
+        }
+        p += 2;
+        if (is_prime(s, p)) {
+            cnt += 1;
+            if (cnt == N)
+                break;
+        }
+        p += 4;
+    }
+    return p;
+}
+
+
 
 int main()
 {
@@ -39,30 +80,10 @@ int main()
     assert(s->s);
 
     fill_sieve(s);
-    
-    outp = is_prime(s, n);
-    printf("%d\n", outp);
 
+    outp = nth_prime(s, n);
+    printf("%d\n", outp);
+    
     free(s->s);
     free(s);
-}
-
-#line 10000
-
-void fill_sieve(struct sieve_t *sv) {
-    printf("Заполняем\n");
-    for (int i = 2; i * i < (*sv).n / 32; ++i) {
-	    printf("i = %d\n", i);
-        if (((*sv).s[i] >> 7 ) != 1) {
-      		for (int j = i * i; j < (*sv).n / 32; j += i) {
-                (*sv).s[j] = (*sv).s[j] | (1 << (8 - j));
-		printf("j = %d (1 << (8 - j)) = %d\n", j, (1 << (8 - j)));
-	    }
-	}
-    }
-
-}
-int is_prime(struct sieve_t *sv, unsigned n) {
-return 23;
-
 }
