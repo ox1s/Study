@@ -18,7 +18,7 @@ class Colors:
 def find_available_problems():
     """Находит доступные задачи по шаблону problem_*.c и извлекает их аббревиатуры."""
     problems = {}
-    for c_file in glob.glob("problem_*.c"):
+    for c_file in glob.glob("dproblem_*/problem_*.c"):
         match = re.search(r'problem_([a-zA-Z0-9_]+)\.c', c_file)
         if match:
             abbreviation = match.group(1)
