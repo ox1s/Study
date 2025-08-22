@@ -1,1 +1,4 @@
 c-housework/tests*/
+c-housework/*.out
+c-housework/*~
+c-housework/*.pyc
